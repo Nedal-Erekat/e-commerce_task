@@ -1,0 +1,82 @@
+.cardWrapper {
+  width: 280px;
+  padding: 15px;
+  margin: 15px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.cardWrapper:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  height: 2.5em; /* Reserve space for two lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.img:hover {
+  opacity: 0.8;
+}
+
+.description {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.addToCartButton {
+  padding: 10px 15px;
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartButton:hover {
+  background-color: #e5533c;
+}
+
+@media (max-width: 991px) {
+  .cardWrapper {
+    width: 250px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cardWrapper {
+    width: 220px;
+    margin: 20px auto;
+  }
+}
