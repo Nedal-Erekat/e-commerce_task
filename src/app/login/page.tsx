@@ -1,11 +1,6 @@
 "use client";
 
 import loginUser from "@/actions/loginUser";
-import fetchUser from "@/services/getUser";
-import { User } from "@/types/user.type";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useFormState } from "react-dom";
 import styles from "./login.module.scss";
 

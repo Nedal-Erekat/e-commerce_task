@@ -1,6 +1,7 @@
 "use server";
 
 import fetchUser from "@/services/getUser";
+import { createSession, deleteSession } from "@/services/sessions";
 import { LoginForm, User } from "@/types/user.type";
 import { redirect } from "next/navigation";
 
@@ -15,7 +16,10 @@ export default async function loginUser(
     };
     if (login.email && login.password) {
       const user: User | undefined = await fetchUser(login.email);
-      console.log(user);
+      
+      if (user) {
+        await createSession(user.id, user.username);
+      }
 
       if (!user) {
         return "Invalid email";
@@ -29,4 +33,9 @@ export default async function loginUser(
     return "Login failed";
   }
   redirect("/");
+}
+
+export async function logout() {
+  deleteSession();
+  redirect("/login");
 }

@@ -1,16 +1,24 @@
-import Image from "next/image";
-import styles from "./page.module.scss";
 import ProductsList from "@/components/products/products-list";
 import { Suspense } from "react";
+import { getSession } from "@/services/sessions";
+import { redirect } from "next/navigation";
 
-// TODO: add meta data
+export const metadata = {
+  title: 'All Products',
+  description: 'Browse the products available on our store.',
+};
 
-export default function Home() {
+export default async function Home() {
+  const user = await getSession();
+  if (!user) {
+    return redirect("/login");
+  }
+
   return (
     <>
-    <Suspense fallback={<h2>Loading...</h2>}>
-      <ProductsList/>
-    </Suspense>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <ProductsList />
+      </Suspense>
     </>
   );
 }

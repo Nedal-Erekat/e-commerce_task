@@ -3,6 +3,28 @@
   padding: 10px 20px;
 }
 
+.container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.lftNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; 
+}
+
+.appHeadline {
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f44336;
+  margin: 0;
+}
+
 .navList {
   display: flex;
   justify-content: center;
@@ -19,12 +41,39 @@
 .navLink {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 16px;
   transition: color 0.3s ease;
+}
+
+.userName {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-inline: 1rem;
 }
 
 .navLink:hover {
   color: #ff6347;
+}
+
+.logoutButton {
+  background-color: #f44336;
+  border: 2px solid transparent;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.logoutButton:hover {
+  background-color: white;
+  color: #f44336;
+  border-color: #f44336;
 }
 
 @media (max-width: 767px) {

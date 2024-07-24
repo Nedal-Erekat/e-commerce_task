@@ -2,6 +2,7 @@
 
 import createUser from "@/services/creatUser";
 import fetchUser from "@/services/getUser";
+import { createSession } from "@/services/sessions";
 import { RegistrationForm, User } from "@/types/user.type";
 import { redirect } from "next/navigation";
 
@@ -26,15 +27,13 @@ export default async function registerUser(prevState: any, formData: FormData) {
     );
     if (allFieldsFilled) {
       const user: User = await createUser(registerData);
-    //   console.log(user);
-    // TODO: show success msg
+      await createSession(user.id, user.username);
+      // TODO: show success msg
     } else {
       return "missing fields";
     }
-
   } catch (error) {
     return "Registration failed";
   }
-
   redirect("/login");
 }
