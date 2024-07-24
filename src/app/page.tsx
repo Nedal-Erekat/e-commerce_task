@@ -1,22 +1,25 @@
 import ProductsList from "@/components/products/products-list";
 import { Suspense } from "react";
-import { getSession } from "@/services/sessions";
+import { getSession } from "@/actions/sessions";
 import { redirect } from "next/navigation";
+import { SessionPayload } from "@/types/session.type";
+import LoadingPage from "./loading";
 
 export const metadata = {
-  title: 'All Products',
-  description: 'Browse the products available on our store.',
+  title: "All Products",
+  description: "Browse the products available on our store.",
 };
 
 export default async function Home() {
-  const user = await getSession();
+  const user: SessionPayload | null = await getSession();
+  
   if (!user) {
     return redirect("/login");
   }
 
   return (
     <>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<LoadingPage/>}>
         <ProductsList />
       </Suspense>
     </>

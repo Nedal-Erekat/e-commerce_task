@@ -11,7 +11,7 @@ export default async function ProductsList() {
     <div className={style.container}>
       <h2 className={style.title}>Products</h2>
       <ul className={style.grid}>
-        {products.map((product: Product) => (
+        {products && products.map((product: Product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </ul>

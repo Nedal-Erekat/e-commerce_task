@@ -1,7 +1,7 @@
 "use server";
 
 import fetchUser from "@/services/getUser";
-import { createSession, deleteSession } from "@/services/sessions";
+import { createSession, deleteSession } from "@/actions/sessions";
 import { LoginForm, User } from "@/types/user.type";
 import { redirect } from "next/navigation";
 

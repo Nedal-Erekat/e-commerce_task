@@ -2,7 +2,7 @@
 
 import createUser from "@/services/creatUser";
 import fetchUser from "@/services/getUser";
-import { createSession } from "@/services/sessions";
+import { createSession } from "@/actions/sessions";
 import { RegistrationForm, User } from "@/types/user.type";
 import { redirect } from "next/navigation";
 

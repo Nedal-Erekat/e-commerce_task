@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import AppHeader from "@/components/header/app-header";
-import { getSession } from "@/services/sessions";
+import { getSession } from "@/actions/sessions";
 
 import { SessionPayload } from "@/types/session.type";
 
