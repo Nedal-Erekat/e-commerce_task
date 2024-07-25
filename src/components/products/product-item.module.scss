@@ -1,4 +1,4 @@
-@use '@/styles' as *;
+@use "@/styles" as *;
 
 .cardWrapper {
   width: 280px;
@@ -9,6 +9,9 @@
   box-shadow: 0 4px 6px $color_black_box_shadow;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cardWrapper:hover {
@@ -30,9 +33,17 @@
 }
 
 .img {
+  transition: opacity 0.3s ease;
+  object-fit: contain
+}
+
+.imageWrapper {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
   border-radius: 10px;
   margin-bottom: 10px;
-  transition: opacity 0.3s ease;
 }
 
 .img:hover {

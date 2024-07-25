@@ -11,14 +11,16 @@ export default function ProductItem({ product }: props) {
   return (
     <li className={style.cardWrapper}>
       <h2 className={style.title}>{product.title}</h2>
+      <section className={style.imageWrapper}>
+
       <Image
         className={style.img}
         src={product.image}
-        width={150}
-        height={200}
+        fill
         alt={product.title}
         priority
       />
+      </section>
       <p className={style.description}>{product.description}</p>
       <p className={style.price}>${product.price}</p>
       <button className={style.addToCartButton}>Add to Cart</button>

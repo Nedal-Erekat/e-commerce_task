@@ -6,7 +6,7 @@ import { SessionPayload } from "@/types/session.type";
 import LoadingPage from "./loading";
 
 export const metadata = {
-  title: "All Products",
+  title: "Shopping | All Products",
   description: "Browse the products available on our store.",
 };
 
