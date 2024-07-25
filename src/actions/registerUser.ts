@@ -1,5 +1,5 @@
 "use server";
-
+import {hash} from "bcryptjs";
 import createUser from "@/services/creatUser";
 import fetchUser from "@/services/getUser";
 import { createSession } from "@/actions/sessions";
@@ -26,7 +26,13 @@ export default async function registerUser(prevState: any, formData: FormData) {
       (value) => value.trim() !== ""
     );
     if (allFieldsFilled) {
-      const user: User = await createUser(registerData);
+
+      const hashedPassWord = await hash(registerData.password, 8)
+
+      const user: User = await createUser({
+        ...registerData,
+        password: hashedPassWord,
+      });
       await createSession(user.id, user.username);
       // TODO: show success msg
     } else {
