@@ -5,12 +5,14 @@ import AppHeader from "@/components/header/app-header";
 import { getSession } from "@/actions/sessions";
 
 import { SessionPayload } from "@/types/session.type";
+import AuthProvider from "@/context/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Shopping",
-  description: "Shopping has lots of hight quality affordable products from all the world",
+  description:
+    "Shopping has lots of hight quality affordable products from all the world",
 };
 
 export default async function RootLayout({
@@ -18,16 +20,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user: SessionPayload|null = await getSession(); 
-  const username: string |undefined = user?.username
+  const user: SessionPayload | null = await getSession();
+  const username: string | undefined = user?.username;
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>
-          <AppHeader username={username} />
-        </header>
-        <main>{children}</main>
+        <AuthProvider>
+          <header>
+            <AppHeader username={username} />
+          </header>
+          <main>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

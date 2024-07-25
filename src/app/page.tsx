@@ -12,14 +12,14 @@ export const metadata = {
 
 export default async function Home() {
   const user: SessionPayload | null = await getSession();
-  
+
   if (!user) {
     return redirect("/login");
   }
 
   return (
     <>
-      <Suspense fallback={<LoadingPage/>}>
+      <Suspense fallback={<LoadingPage />}>
         <ProductsList />
       </Suspense>
     </>

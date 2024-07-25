@@ -1,0 +1,30 @@
+@use "@/styles" as *;
+
+.container {
+  max-width: 360px;
+  margin: 60px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: $color_white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  text-align: center;
+  color: #444;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: $color_error;
+  font-size: 14px;
+  margin-top: 12px;
+}

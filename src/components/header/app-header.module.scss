@@ -78,7 +78,8 @@
   border-color: $color_primary;
 }
 
-@media (max-width: 767px) {
+
+@include respond-to-md  {
   .navList {
     flex-direction: column;
     align-items: flex-start;

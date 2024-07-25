@@ -83,13 +83,13 @@
   background-color: $color_primary_light;
 }
 
-@media (max-width: 991px) {
+@include respond-to-lg {
   .cardWrapper {
     width: 250px;
   }
 }
 
-@media (max-width: 767px) {
+@include respond-to-md  {
   .cardWrapper {
     width: 220px;
     margin: 20px auto;
