@@ -26,14 +26,16 @@ export default async function registerUser(prevState: any, formData: FormData) {
       (value) => value.trim() !== ""
     );
     if (allFieldsFilled) {
-
+      // Hash the password and create the user
       const hashedPassWord = await hash(registerData.password, 8)
-
       const user: User = await createUser({
         ...registerData,
         password: hashedPassWord,
       });
+
+      // Create session for the new user
       await createSession(user.id, user.username);
+
     } else {
       return "missing fields";
     }
