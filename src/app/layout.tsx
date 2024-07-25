@@ -20,15 +20,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user: SessionPayload | null = await getSession();
-  const username: string | undefined = user?.username;
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
           <header>
-            <AppHeader username={username} />
+            <AppHeader />
           </header>
           <main>{children}</main>
         </AuthProvider>

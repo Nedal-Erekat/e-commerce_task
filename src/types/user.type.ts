@@ -15,3 +15,12 @@ export type User = BaseUser & {
 export type LoginForm = Pick<BaseUser, "email" | "password">;
 
 export type RegistrationForm = Omit<BaseUser, "id">;
+
+export type AuthContextType = {
+  userS: UserContext | null;
+  setUserS: (user: UserContext | null) => void;
+};
+
+export type UserContext = {
+  username: string
+}

@@ -1,17 +1,22 @@
 "use client";
 
 import { deleteSession } from "@/actions/sessions";
-import { AuthContext } from "@/context/auth";
-import { useContext } from "react";
+import { useAuth } from "@/context/auth";
+import { useEffect } from "react";
 import style from "./app-header.module.scss";
 import Link from "next/link";
 
 export const LogoutButton = (props: { name: string | undefined }) => {
+  const { setUserS } = useAuth();
+  const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
+    setUserS({ username: "" });
+  };
+
   return (
     <>
       <li className={style.userName}>Welcome {props.name}</li>
       <li>
-        <form action={deleteSession}>
+        <form action={deleteSession} onSubmit={handleLogout}>
           <button className={style.logoutButton} type="submit">
             Logout
           </button>
@@ -21,12 +26,18 @@ export const LogoutButton = (props: { name: string | undefined }) => {
   );
 };
 
-export const AuthLinks = () => {
-  const user = useContext(AuthContext);
+export const AuthLinks = ({ username }: { username: string | undefined }) => {
+  const { setUserS } = useAuth();
+  useEffect(() => {
+    if (username) {
+      setUserS({ username });
+    }
+  }, [setUserS, username]);
+
   return (
     <ul className={style.navList}>
-      {user.name ? (
-        <LogoutButton name={user.name} />
+      {username ? (
+        <LogoutButton name={username} />
       ) : (
         <>
           <li className={style.navItem}>

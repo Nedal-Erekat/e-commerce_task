@@ -1,9 +1,12 @@
 import Link from "next/link";
 import style from "./app-header.module.scss";
 import { AuthLinks } from "./auth-links";
+import { SessionPayload } from "@/types/session.type";
+import { getSession } from "@/actions/sessions";
 
-export default function AppHeader(props: { username: string | undefined }) {
-  
+export default async function AppHeader() {
+  const user: SessionPayload | null = await getSession();
+
   return (
     <nav className={style.nav}>
       <div className={style.container}>
@@ -11,7 +14,7 @@ export default function AppHeader(props: { username: string | undefined }) {
           <Link className={style.appHeadline} href="/">
             <h1 className="appHeadline">Shopping</h1>
           </Link>
-          {props.username && (
+          {user && (
             <ul className={style.navList}>
               <li className={style.navItem}>
                 <Link href="/" className={style.navLink}>
@@ -21,12 +24,8 @@ export default function AppHeader(props: { username: string | undefined }) {
             </ul>
           )}
         </div>
-        <AuthLinks />
+        <AuthLinks username={user?.username}/>
       </div>
     </nav>
   );
 }
-
-
-
-

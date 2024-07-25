@@ -34,12 +34,11 @@ export default async function registerUser(prevState: any, formData: FormData) {
         password: hashedPassWord,
       });
       await createSession(user.id, user.username);
-      // TODO: show success msg
     } else {
       return "missing fields";
     }
   } catch (error) {
     return "Registration failed";
   }
-  redirect("/login");
+  redirect("/");
 }
