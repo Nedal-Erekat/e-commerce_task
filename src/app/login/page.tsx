@@ -3,6 +3,7 @@
 import loginUser from "@/actions/loginUser";
 import { useFormState } from "react-dom";
 import styles from "./login.module.scss";
+import SubmitButton from "@/components/forms/submit-button";
 
 export default function Login() {
   const [state, formAction] = useFormState(loginUser, null);
@@ -22,7 +23,7 @@ export default function Login() {
           </label>
         </div>
         {state && <p className={styles.error}>{state}</p>}
-        <button type="submit" className={styles.button}>Login</button>
+        <SubmitButton label="Login"/>
       </form>
     </div>
   );

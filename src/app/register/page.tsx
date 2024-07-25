@@ -3,6 +3,7 @@
 import registerUser from "@/actions/registerUser";
 import { useFormState } from "react-dom";
 import styles from "./register.module.scss";
+import SubmitButton from "@/components/forms/submit-button";
 
 export default function Register() {
   const [state, formAction] = useFormState(registerUser, null);
@@ -36,9 +37,8 @@ export default function Register() {
           </label>
         </div>
         {state && <p className={styles.error}>{state}</p>}
-        <button type="submit" className={styles.button}>
-          Register
-        </button>
+        <SubmitButton label="Register"/>
+
       </form>
     </div>
   );
